@@ -44,19 +44,6 @@
       color: white;
       padding: 20px;
     }
-    .top-section1 {
-      background: linear-gradient(135deg, #1e88e5, #00e5a0);
-      height: 10%;
-      border-bottom-left-radius: 30% 20%;
-      border-bottom-right-radius: 90% 20%;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      padding: 20px;
-    }
 
     .top-section h1 {
       font-size: 24px;
@@ -69,15 +56,13 @@
 
     .form-section {
       position: absolute;
-      border: 1px solid white;
       top: 38%;
       left: 50%;
       transform: translateX(-50%);
       width: 85%;
       background: rgba(255, 255, 255, 0.212);
       backdrop-filter: blur(5px);
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+      border: 1px solid white;
       padding: 20px;
       border-radius: 20px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -88,13 +73,27 @@
       margin-bottom: 15px;
     }
 
-    .form-section input {
+    .form-section input[type="text"] {
       width: 100%;
       padding: 12px;
       margin-bottom: 12px;
       border-radius: 12px;
       border: 1px solid #ccc;
       font-size: 14px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
     }
 
     .form-section button {
@@ -113,14 +112,6 @@
       color: white;
     }
 
-    .form-section .google-btn {
-      background: #fff;
-      border: 1px solid #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     .form-section .facebook-btn {
       background: #1877f2;
       color: white;
@@ -133,56 +124,45 @@
       color: #aaa;
     }
 
-    .bottom-nav {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      padding: 12px 0;
-      background: white;
-      border-top: 1px solid #eee;
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
-    }
-
-    .bottom-nav i {
-      font-size: 20px;
-      color: #888;
-    }
 
     a {
       text-decoration: none;
       color: #00bcd4;
       font-size: 12px;
     }
-    .logo{
-        width: 300px;
+
+    .logo {
+      width: 300px;
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <div class="app-container">
     <div class="top-section">
-      <img class="logo"  src="./assest/images/logo.png" alt="">
+      <img class="logo" src="./assest/images/logo.png" alt="Logo">
       <h1>Table 04</h1>
     </div>
 
     <div class="form-section">
-      <h3>Sign in <span style="float:right;font-weight:normal;"><a href="#">Create an account</a></span></h3>
-      <input type="email" placeholder="Email address">
-      <input type="password" placeholder="Password">
-      <button class="continue">Continue</button>
+      <form action="">
+        <h3>Your Details</h3>
+        <input type="text" required placeholder="Your Name">
+        <input type="text" required placeholder="Mobile Number">
+        
+        <div class="checkbox-container">
+          <input type="checkbox" id="remember" name="remember" />
+          <label for="remember">Allow promotion sms</label>
+        </div>
+        
+        <button class="continue">Continue</button>
+      </form>
+
       <div class="or-divider">or</div>
-      <button class="google-btn">🔍 Continue with Google</button>
-      <button class="facebook-btn">Continue with Facebook</button>
+      <button class="facebook-btn">Skip</button>
     </div>
 
-    <div class="bottom-nav">
-      <i>🏠</i>
-      <i>🔒</i>
-      <i>👤</i>
-    </div>
+    
   </div>
 </body>
 </html>

@@ -1,11 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber Cafe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #d9f3ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 400px;
+      height: 100%;
+      background: #fff;
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .top-section {
+      background: linear-gradient(135deg, #1e88e5, #00e5a0);
+      height: 50%;
+      border-bottom-left-radius: 30% 20%;
+      border-bottom-right-radius: 90% 20%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding: 20px;
+    }
+    .top-section1 {
+      background: linear-gradient(135deg, #1e88e5, #00e5a0);
+      height: 10%;
+      border-bottom-left-radius: 30% 20%;
+      border-bottom-right-radius: 90% 20%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding: 20px;
+    }
+
+    .top-section h1 {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    .top-section .logo {
+      font-size: 40px;
+    }
+
+    .form-section {
+      position: absolute;
+      border: 1px solid white;
+      top: 38%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      background: rgba(255, 255, 255, 0.212);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .form-section h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .form-section input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .form-section button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      margin-top: 8px;
+    }
+
+    .form-section .continue {
+      background: #00bcd4;
+      color: white;
+    }
+
+    .form-section .google-btn {
+      background: #fff;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-section .facebook-btn {
+      background: #1877f2;
+      color: white;
+    }
+
+    .form-section .or-divider {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .bottom-nav {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      background: white;
+      border-top: 1px solid #eee;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+
+    .bottom-nav i {
+      font-size: 20px;
+      color: #888;
+    }
+
+    a {
+      text-decoration: none;
+      color: #00bcd4;
+      font-size: 12px;
+    }
+    .logo{
+        width: 300px;
+    }
+  </style>
 </head>
 <body>
-    
+  <div class="app-container">
+    <div class="top-section">
+      <img class="logo"  src="./assest/images/logo.png" alt="">
+      <h1>Table 04</h1>
+    </div>
+
+    <div class="form-section">
+      <h3>Sign in <span style="float:right;font-weight:normal;"><a href="#">Create an account</a></span></h3>
+      <input type="email" placeholder="Email address">
+      <input type="password" placeholder="Password">
+      <button class="continue">Continue</button>
+      <div class="or-divider">or</div>
+      <button class="google-btn">🔍 Continue with Google</button>
+      <button class="facebook-btn">Continue with Facebook</button>
+    </div>
+
+    <div class="bottom-nav">
+      <i>🏠</i>
+      <i>🔒</i>
+      <i>👤</i>
+    </div>
+  </div>
 </body>
 </html>

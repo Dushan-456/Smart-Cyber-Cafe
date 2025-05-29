@@ -25,8 +25,7 @@ body {
     color: #333;
   }
 
-  .cart::after {
-    content: '2';
+  .cartdot {
     position: absolute;
     top: -6px;
     right: -10px;

@@ -9,7 +9,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: #fff;
+    background: #ffffff;
     box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   }
 
@@ -40,7 +40,9 @@ body {
   .tabs {
     display: flex;
     justify-content: space-around;
-    background: #fff;
+    background: #ffffff8e;
+    backdrop-filter: blur(5px);
+
     padding: 10px 0;
     border-bottom: 1px solid #eee;
   }
@@ -48,7 +50,7 @@ body {
   .tab {
     font-size: 14px;
     padding: 5px 10px;
-    color: #888;
+    color: #000000;
     cursor: pointer;
   }
 
@@ -193,7 +195,6 @@ body {
     overflow: scroll;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     overflow: hidden;
   }
 
@@ -345,6 +346,13 @@ display: none;
     position: absolute;
     top: 20px;
     right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
     font-size: 24px;
     cursor: pointer;
   }
@@ -500,11 +508,18 @@ display: none;
     margin-top: 1.5rem;
     font-size: 0.85rem;
     color: #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
   .section h4 {
     font-size: 0.95rem;
     margin-bottom: 4px;
+  }
+  .section p {
+    text-align: center;
   }
   
   .stars {
@@ -512,4 +527,138 @@ display: none;
     margin-top: 6px;
     color: #FFD700;
   }
-  
+  .app-container {
+    width: 100%;
+    max-width: 600px;
+    height: 90vh;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .top-section {
+    background: linear-gradient(135deg, #1e88e5, #00e5a0);
+    height: 50%;
+    border-bottom-left-radius: 30% 20%;
+    border-bottom-right-radius: 90% 20%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+  }
+
+  .top-section h1 {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+
+  .top-section .logo {
+    font-size: 40px;
+  }
+
+  .form-section {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    background: rgba(255, 255, 255, 0.212);
+    backdrop-filter: blur(5px);
+    border: 1px solid white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .form-section h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .form-section input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .checkbox-container input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .form-section button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    margin-top: 8px;
+  }
+
+  .form-section .continue {
+    background: #00bcd4;
+    color: white;
+  }
+
+  .form-section .facebook-btn {
+    background: #1877f2;
+    color: white;
+  }
+
+  .form-section .or-divider {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #aaa;
+  }
+
+
+  a {
+    text-decoration: none;
+    color: #00bcd4;
+    font-size: 12px;
+  }
+
+  .logo {
+    width: 300px;
+  }
+  .count-down{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.24);
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .count-down h2 {
+    font-size: 2.5em;
+  }
+  .count-down p {
+    font-size: 0.7em;
+  }
+  .offer-iems{
+    padding-top: 10px;
+  }
+  .offer-iems .food-card-menu img {
+    width: 55px;
+    height: 55px;
+  }

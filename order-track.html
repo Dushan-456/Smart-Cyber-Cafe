@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Order</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f5f5;
+  padding: 1rem;
+}
+
+.container {
+  max-width: 400px;
+  margin: auto;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtext {
+  font-size: 0.85rem;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  gap: 2px;
+}
+
+.amount {
+  font-weight: bold;
+  color: #000;
+}
+
+.eta {
+  font-size: 0.9rem;
+  margin: 0.8rem 0;
+  color: #333;
+}
+
+.timeline {
+  border-left: 2px dashed #ccc;
+  margin-left: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.step {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  position: absolute;
+  left: -27px;
+  top: 5px;
+  border: 2px solid white;
+}
+
+.green { background-color: #4CAF50; }
+.orange { background-color: #FFA726; }
+.yellow { background-color: #FFEB3B; }
+.gray { background-color: #BDBDBD; }
+
+.step h4 {
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+  color: #333;
+}
+
+.step p {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.time {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.section {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.section h4 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.stars {
+  font-size: 1.2rem;
+  margin-top: 6px;
+  color: #FFD700;
+}
+
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="container">
+    <h2>Your Order Status</h2>
+    <div class="subtext">
+      <span>Order ID: 5t36-83j4</span>
+      <span class="amount">Total: Rs 5345.00</span>
+    </div>
+
+    <div class="eta">ETA: <strong>15 Min</strong></div>
+
+    <div class="timeline">
+      <div class="step active">
+        <div class="icon "><i class="fa-solid fa-circle-check" style="color: #0b7958;"></i></div>
+        <div class="details">
+          <h4>Select Foods</h4>
+          <p>Order#234562 from Tasty Food.</p>
+        </div>
+        <span class="time">11:00</span>
+      </div>
+
+      <div class="step active">
+        <div class="icon "><i class="fa-solid fa-circle-check" style="color: #0b7958;"></i></div>
+        <div class="details">
+          <h4>Payment Confirmed</h4>
+          <p>Awaiting confirmation...</p>
+        </div>
+        <span class="time">10:08</span>
+      </div>
+
+      <div class="step active">
+        <div class="icon "><i class="fa-solid fa-circle-check" style="color: #0b7958;"></i></div>
+        <div class="details">
+          <h4>Order in Queue</h4>
+          <p>Order will prepare soon..</p>
+        </div>
+        <span class="time">10:06</span>
+      </div>
+
+      <div class="step active">
+        <div class="icon orange"></div>
+        <div class="details">
+          <h4>Get for Prepair</h4>
+          <p>We are preparing your order..</p>
+        </div>
+        <span class="time">10:04</span>
+      </div>
+      <div class="step active">
+        <div class="icon orange"></div>
+        <div class="details">
+          <h4>Order served to table </h4>
+          <p>Enjoy Your Foods..</p>
+        </div>
+        <span class="time">10:04</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4>Delivery Address</h4>
+      <p>
+        If the order is not delivered within 15 minutes of payment,You are eligible for a free Coca-Cola.
+      </p>
+    </div>
+
+    <div class="section rate">
+      <h4>Don't forget to rate</h4>
+      <p>Oh Teri! Kitchen to help your fellow foodies.</p>
+      <div class="stars">⭐️⭐️⭐️⭐️⭐️</div>
+    </div>
+  </div>
+</body>
+</html>

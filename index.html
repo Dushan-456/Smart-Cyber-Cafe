@@ -4,141 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cyber Cafe</title>
+  <link rel="stylesheet" href="./styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    body {
-      background-color: #d9f3ff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .app-container {
-      width: 100%;
-      max-width: 400px;
-      height: 100%;
-      background: #fff;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .top-section {
-      background: linear-gradient(135deg, #1e88e5, #00e5a0);
-      height: 50%;
-      border-bottom-left-radius: 30% 20%;
-      border-bottom-right-radius: 90% 20%;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      padding: 20px;
-    }
-
-    .top-section h1 {
-      font-size: 24px;
-      margin-top: 10px;
-    }
-
-    .top-section .logo {
-      font-size: 40px;
-    }
-
-    .form-section {
-      position: absolute;
-      top: 38%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 85%;
-      background: rgba(255, 255, 255, 0.212);
-      backdrop-filter: blur(5px);
-      border: 1px solid white;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    .form-section h3 {
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-
-    .form-section input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 12px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
-
-    .checkbox-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-      font-size: 14px;
-      color: #333;
-    }
-
-    .checkbox-container input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-    }
-
-    .form-section button {
-      width: 100%;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-      margin-top: 8px;
-    }
-
-    .form-section .continue {
-      background: #00bcd4;
-      color: white;
-    }
-
-    .form-section .facebook-btn {
-      background: #1877f2;
-      color: white;
-    }
-
-    .form-section .or-divider {
-      text-align: center;
-      margin: 10px 0;
-      font-size: 14px;
-      color: #aaa;
-    }
 
 
-    a {
-      text-decoration: none;
-      color: #00bcd4;
-      font-size: 12px;
-    }
-
-    .logo {
-      width: 300px;
-    }
+   
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <div class="app-container">
+  <div class="app-container body-container">
     <div class="top-section">
       <img class="logo" src="./assest/images/logo.png" alt="Logo">
       <h1>Table 04</h1>

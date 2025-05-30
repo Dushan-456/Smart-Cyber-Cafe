@@ -220,27 +220,38 @@
 
 </div>
 
-  <script>
-    const tabs = document.querySelectorAll(".tab");
-    const grids = document.querySelectorAll(".menu-grid");
 
-    tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        // Remove active from all tabs
-        tabs.forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
+<!-- // login popup -->
+ 
 
-        // Show the corresponding grid
-        grids.forEach(grid => {
-          if (grid.id === tab.dataset.tab) {
-            grid.classList.add("active");
-          } else {
-            grid.classList.remove("active");
-          }
-        });
-      });
-    });
-  </script>
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+   
+        <div class="form-section">
+      <form action="">
+            <span class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+
+        <h3>Your Details</h3>
+        
+        <input type="text" required placeholder="Your Name">
+        <input type="text" required placeholder="Mobile Number">
+        
+        <div class="checkbox-container">
+          <input type="checkbox" id="remember" name="remember" />
+          <label for="remember">Allow promotion sms</label>
+        </div>
+        
+        <button class="continue" onclick="login()">Continue</button>
+      </form>
+
+      <div class="or-divider">or</div>
+      <button class="facebook-btn" onclick="closeModal()">Skip</button>
+    </div>
+  </div>
+</div>
+
+<script src="./script.js"></script>
+
 
 </body>
 </html>

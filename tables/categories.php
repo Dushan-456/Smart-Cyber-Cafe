@@ -16,13 +16,13 @@
     $food_category_result = mysqli_query($conn,$food_category_query);
     while($food_category_result_row = mysqli_fetch_assoc($food_category_result)){
 
-            $id = $food_category_result_row["id"];
+            $category_id = $food_category_result_row["id"];
             $name = $food_category_result_row["name"];
             $category_image = $food_category_result_row["category_image"];
 
             echo"
                <div class='food-card'>
-                    <a href='?category=$id'>                    
+                    <a href='?category=$category_id'>                    
                     <img src='../assest/images/products/$category_image' alt='$name'>
                     <div class='favorite'><i ></i></div>
                     <h4>$name</h4>

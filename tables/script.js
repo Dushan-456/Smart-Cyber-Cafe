@@ -22,9 +22,9 @@
 
 
      // Show the modal when page loads
-  window.onload = function() {
-    document.getElementById('loginModal').style.display = 'block';
-  };
+  // window.onload = function() {
+  //   document.getElementById('loginModal').style.display = 'block';
+  // };
 
   // Close modal
   function closeModal() {
@@ -32,9 +32,9 @@
   }
 
   // Login action (demo)
-  function login() {
-    const user = document.getElementById('username').value;
-    const pass = document.getElementById('password').value;
-    alert("Logged in as: " + user);
-    closeModal(); // hide modal after login
-  }
+  // function login() {
+  //   const user = document.getElementById('username').value;
+  //   const pass = document.getElementById('password').value;
+  //   alert("Logged in as: " + user);
+  //   closeModal(); // hide modal after login
+  // }

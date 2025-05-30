@@ -9,9 +9,15 @@ include("../config/db.php");
 
 // $session_NIC = $_SESSION["NIC_num"];
 if(isset( $_GET["table"])){
-$table_number = $_GET["table"];
+  session_start();
+  $_SESSION["table_number"] = $_GET["table"];
 
 }
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+$table_number = $_SESSION["table_number"];
 
 
 // -------------Getting user Details-------------------
@@ -65,7 +71,7 @@ $table_number = $_GET["table"];
   <div class="top">
     <div class="header ">
         <h2>Our Menu</h2>
-        <h2> Table<?php echo " table_number";  ?></h2>
+        <h2> Table<?php echo " $table_number";  ?></h2>
         <div class="cart"><i class="fa-solid fa-cart-shopping fa-beat"><div class="cartdot">2</div></i></div>
       </div>
     <!-- -------------------- -->

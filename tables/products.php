@@ -1,6 +1,8 @@
 
       <div class="tabs">
+        <div ><a class="back-btn" href="?menu"><i class="fa-solid fa-arrow-left"></i> &nbsp; Back</a></div>
         <div class="tab active">Fried Rice</div>
+        <div class="tab "></div>
  
       </div>
 </div>

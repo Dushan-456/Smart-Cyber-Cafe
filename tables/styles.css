@@ -74,7 +74,7 @@ body {
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.171);
     position: relative;
     text-align: center;
   }
@@ -564,7 +564,7 @@ display: none;
     top: 38%;
     left: 50%;
     transform: translateX(-50%);
-    width: 85%;
+    width: 300px;
     background: rgb(255, 255, 255);
     border: 1px solid white;
     padding: 20px;

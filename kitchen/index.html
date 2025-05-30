@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kitchen Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: #f5f7fa;
+    }
+
+    header {
+      background: #0d47a1;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-profile img {
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background: #ffffff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tab {
+      padding: 16px 24px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #555;
+      transition: 0.2s;
+    }
+
+    .tab.active {
+      border-bottom: 3px solid #0d47a1;
+      color: #0d47a1;
+    }
+
+    .orders-container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .order-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      transition: 0.3s ease;
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .order-header h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .order-items {
+      margin: 15px 0;
+    }
+
+    .order-items div {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 16px;
+      border-bottom: 1px dashed #eee;
+    }
+
+    .order-time {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .action-btn {
+      background-color: #0d47a1;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .action-btn:hover {
+      background-color: #1565c0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .status {
+      font-size: 14px;
+      color: green;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://dummyimage.com/100x40/ffffff/000000&text=LOGO" alt="Logo" />
+    <div class="user-profile">
+      <span>Chef John</span>
+      <img src="https://i.pravatar.cc/100" alt="User" />
+    </div>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('pending')">Pending Orders</div>
+    <div class="tab" onclick="showTab('completed')">Completed Orders</div>
+  </div>
+
+  <div class="orders-container">
+
+    <!-- Pending Orders -->
+    <div id="pending" class="tab-content">
+      <div class="order-card">
+        <div class="order-header">
+          <h3>Table 3</h3>
+          <div class="order-time">12:15 PM</div>
+        </div>
+        <div class="order-items">
+          <div><span>Chicken Burger</span><span>2x</span></div>
+          <div><span>French Fries</span><span>1x</span></div>
+        </div>
+        <button class="action-btn" onclick="completeOrder(this)">Start Preparing</button>
+      </div>
+
+      <div class="order-card">
+        <div class="order-header">
+          <h3>Table 5</h3>
+          <div class="order-time">12:25 PM</div>
+        </div>
+        <div class="order-items">
+          <div><span>Spaghetti</span><span>1x</span></div>
+          <div><span>Orange Juice</span><span>1x</span></div>
+        </div>
+        <button class="action-btn" onclick="completeOrder(this)">Start Preparing</button>
+      </div>
+    </div>
+
+    <!-- Completed Orders -->
+    <div id="completed" class="tab-content hidden">
+      <div class="order-card">
+        <div class="order-header">
+          <h3>Table 1</h3>
+          <div class="order-time">11:55 AM</div>
+        </div>
+        <div class="order-items">
+          <div><span>Veg Rice</span><span>2x</span></div>
+          <div><span>Mango Juice</span><span>1x</span></div>
+        </div>
+        <div class="status">✅ Preparation Complete</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(c => c.classList.add('hidden'));
+
+      document.getElementById(tabId).classList.remove('hidden');
+      event.target.classList.add('active');
+    }
+
+ 
+  </script>
+
+</body>
+</html>

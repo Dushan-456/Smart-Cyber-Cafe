@@ -8,9 +8,10 @@
 include("../config/db.php");
 
 // $session_NIC = $_SESSION["NIC_num"];
+if(isset( $_GET["table"])){
+$table_number = $_GET["table"];
 
-
-
+}
 
 
 // -------------Getting user Details-------------------
@@ -64,88 +65,24 @@ include("../config/db.php");
   <div class="top">
     <div class="header ">
         <h2>Our Menu</h2>
-        <h2>Table 01</h2>
+        <h2> Table<?php echo " table_number";  ?></h2>
         <div class="cart"><i class="fa-solid fa-cart-shopping fa-beat"><div class="cartdot">2</div></i></div>
       </div>
-    
-      <div class="tabs">
-        <div class="tab active" data-tab="foods">Foods</div>
-        <div class="tab" data-tab="drinks">Drinks</div>
-        <div class="tab" data-tab="desserts">Desserts</div>
-      </div>
-</div>
+    <!-- -------------------- -->
 
-  <!-- Foods Grid -->
-  <div class="menu-grid active" id="foods">
-
-  <?php
-    
-    global $conn;
-
-    $food_category_query = "SELECT * FROM `categories`   WHERE  parent_category = 'Foods'";
-    $food_category_result = mysqli_query($conn,$food_category_query);
-    while($food_category_result_row = mysqli_fetch_assoc($food_category_result)){
-
-            $id = $food_category_result_row["id"];
-            $name = $food_category_result_row["name"];
-            $category_image = $food_category_result_row["category_image"];
-
-            echo"
-               <div class='food-card'>
-                    <a href='#$id'>                    
-                    <img src='../assest/images/products/$category_image' alt='$name'>
-                    <div class='favorite'><i ></i></div>
-                    <h4>$name</h4>
-                    </a>
-
-                </div>
-            
-            ";
-
-                 }
-
- 
-
-  
-  ?>
-
- 
-  
-  </div>
-
-  <!-- drinks Grid -->
-  <div class="menu-grid" id="drinks">
-    <div class="food-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI7uXAnhdOWJpu4Maf6a9yjc1RikPvL0nq_Q&s" alt="Fries">
-      <div class="favorite"><i class="far fa-heart"></i></div>
-      <h4>Fries</h4>
-      <p>N800</p>
-    </div>
-    <div class="food-card">
-      <img src="https://via.placeholder.com/150" alt="Onion Rings">
-      <div class="favorite"><i class="far fa-heart"></i></div>
-      <h4>Onion Rings</h4>
-      <p>N900</p>
-    </div>
-  </div>
-
-  <!-- Desserts Grid -->
-  <div class="menu-grid" id="desserts">
-    <div class="food-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI7uXAnhdOWJpu4Maf6a9yjc1RikPvL0nq_Q&s" alt="Chicken Wings">
-      <div class="favorite"><i class="far fa-heart"></i></div>
-      <h4>Chicken Wings</h4>
-      <p>N1,000</p>
-    </div>
-    <div class="food-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI7uXAnhdOWJpu4Maf6a9yjc1RikPvL0nq_Q&s" alt="Samosa">
-      <div class="favorite"><i class="far fa-heart"></i></div>
-      <h4>Samosa</h4>
-      <p>N500</p>
-    </div>
-  </div>
+<?php
+if(isset( $_GET["menu"])){
+     include("./categories.php");
+}
+if(isset( $_GET["category"])){
+     include("./products.php");
+}
 
 
+
+?>
+
+  <!-- ------------------------- -->
 </div>
 
 

@@ -23,17 +23,65 @@ $table_number = $_SESSION["table_number"];
 if(isset($_POST['submit'])){
   $_SESSION['customer_name'] = $_POST['customer_name'];
   $customer_mobile_number = $_POST['customer_mobile_number'];
+  $sms = isset($_POST['sms']) ? 1 : 0;
   $customer_name = $_SESSION['customer_name'];
+
+  global $conn;
+  $add_customer_query = "INSERT INTO `customers` (`id`, `name`, `phone`, `allow_promotions`, `created_at`) VALUES (NULL, '$customer_name', '$customer_mobile_number', '$sms', current_timestamp());";
+  mysqli_query($conn,$add_customer_query);
+
 
 }elseif(isset($_POST['skip'])){
   $_SESSION['customer_name'] = "User";
+  $_SESSION['customer_mobile_number'] = "No Number";
 
 }
-// $_SESSION['customer_name']= 'John Doe';
 
-// // $nameSet = "ggg";
+// -------------------------------------------------------------------------------------
+if(isset($_GET['prdct-id'])){
+  
+// INPUT (usually comes from frontend via POST)
+$table_id =  $_SESSION["table_number"];
+$product_id = $_GET['prdct-id'];
+$quantity = "1";
+$customer_name =$_SESSION['customer_name'] ?? null;
+$customer_mobile =  $_SESSION['customer_mobile_number'] ?? null;
 
+// Step 1: Check if cart session exists for table
+$sql = "SELECT id FROM cart_sessions WHERE table_id = ? ORDER BY created_at DESC LIMIT 1";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$table_id]);
+$cart_session = $stmt->fetch();
 
+if ($cart_session) {
+    $cart_session_id = $cart_session['id'];
+} else {
+    // Step 2: Create new cart session
+    $insert = "INSERT INTO cart_sessions (table_id, customer_name, customer_mobile) VALUES (?, ?, ?)";
+    $stmt = $pdo->prepare($insert);
+    $stmt->execute([$table_id, $customer_name, $customer_mobile]);
+    $cart_session_id = $pdo->lastInsertId();
+}
+
+// Step 3: Check if product already in cart
+$sql = "SELECT id FROM cart_items WHERE cart_session_id = ? AND product_id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$cart_session_id, $product_id]);
+
+if ($stmt->rowCount() > 0) {
+    // Update quantity
+    $update = "UPDATE cart_items SET quantity = quantity + ? WHERE cart_session_id = ? AND product_id = ?";
+    $stmt = $pdo->prepare($update);
+    $stmt->execute([$quantity, $cart_session_id, $product_id]);
+} else {
+    // Insert new item
+    $insert = "INSERT INTO cart_items (cart_session_id, product_id, quantity) VALUES (?, ?, ?)";
+    $stmt = $pdo->prepare($insert);
+    $stmt->execute([$cart_session_id, $product_id, $quantity]);
+}
+
+}
+// -------------------------------------------------------------------------------------
 
 ?>
 
@@ -80,7 +128,6 @@ if(isset( $_GET["category"])){
 
 <!-- // login popup -->
  
-
 <div id="loginModal" class="modal" style="display: <?php  if(isset($_SESSION['customer_name'])){ echo"none";}else{echo"block";} ; ?>;">
   <div class="modal-content">
    
@@ -94,7 +141,7 @@ if(isset( $_GET["category"])){
         <input type="text" name="customer_mobile_number" required placeholder="Mobile Number">
         
         <div class="checkbox-container">
-          <input type="checkbox" id="remember" name="sms" />
+          <input type="checkbox" name="sms" value="1" />
           <label for="sms">Allow promotion sms</label>
         </div>
         

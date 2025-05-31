@@ -44,7 +44,8 @@
                           <h4>$Product_name</h4>
                           <p>Rs $product_price</p>
                         </div>
-                <div class='buy'><i class='fa-solid fa-cart-plus'></i></div>
+                <div class='buy'><a href='?prdct-id=$product_id'><i class='fa-solid fa-cart-plus'></i></a>
+</div>
             </div>
             
             ";

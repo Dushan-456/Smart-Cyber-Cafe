@@ -12,7 +12,7 @@
     
     global $conn;
 
-    $food_category_query = "SELECT * FROM `categories`   WHERE  parent_category = 'Foods'";
+    $food_category_query = "SELECT * FROM `categories`   WHERE  parent_category = 'Foods'  ORDER BY `name` ASC";
     $food_category_result = mysqli_query($conn,$food_category_query);
     while($food_category_result_row = mysqli_fetch_assoc($food_category_result)){
 

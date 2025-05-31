@@ -20,7 +20,6 @@
 
 
 
-
      // Show the modal when page loads
   // window.onload = function() {
   //   document.getElementById('loginModal').style.display = 'block';

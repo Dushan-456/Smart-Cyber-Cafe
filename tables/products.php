@@ -29,6 +29,7 @@
 
     $foods_query = "SELECT * FROM `products` WHERE category_id = '$category' ORDER BY `name` ASC";
     $foods_result = mysqli_query($conn,$foods_query);
+
     if(mysqli_num_rows($foods_result)>0){
     while($foods_result_row = mysqli_fetch_assoc($foods_result)){
 

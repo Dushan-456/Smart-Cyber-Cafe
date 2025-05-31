@@ -1,13 +1,9 @@
 <?php
-// session_start();
 
-// if(!isset( $_SESSION["NIC_num"])){
 //    echo "<script>window.location.href = './login.php';</script>";
 
-// }
 include("../config/db.php");
 
-// $session_NIC = $_SESSION["NIC_num"];
 if(isset( $_GET["table"])){
   session_start();
   $_SESSION["table_number"] = $_GET["table"];
@@ -38,49 +34,71 @@ if(isset($_POST['submit'])){
 }
 
 // -------------------------------------------------------------------------------------
-if(isset($_GET['prdct-id'])){
-  
-// INPUT (usually comes from frontend via POST)
-$table_id =  $_SESSION["table_number"];
-$product_id = $_GET['prdct-id'];
-$quantity = "1";
-$customer_name =$_SESSION['customer_name'] ?? null;
-$customer_mobile =  $_SESSION['customer_mobile_number'] ?? null;
 
-// Step 1: Check if cart session exists for table
-$sql = "SELECT id FROM cart_sessions WHERE table_id = ? ORDER BY created_at DESC LIMIT 1";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$table_id]);
-$cart_session = $stmt->fetch();
+if (isset($_GET['prdct-id'])) {
 
-if ($cart_session) {
-    $cart_session_id = $cart_session['id'];
-} else {
-    // Step 2: Create new cart session
-    $insert = "INSERT INTO cart_sessions (table_id, customer_name, customer_mobile) VALUES (?, ?, ?)";
-    $stmt = $pdo->prepare($insert);
-    $stmt->execute([$table_id, $customer_name, $customer_mobile]);
-    $cart_session_id = $pdo->lastInsertId();
+
+
+
+    $table_id = $_SESSION["table_number"];
+    $product_id = $_GET['prdct-id'];
+    $quantity = 1;
+    $customer_name = $_SESSION['customer_name'] ?? null;
+    $customer_mobile = $_SESSION['customer_mobile_number'] ?? null;
+
+    // Check if cart session exists
+    $check_session_sql = "SELECT id FROM cart_sessions WHERE table_id = '$table_id' ORDER BY created_at DESC LIMIT 1";
+    $result = mysqli_query($conn, $check_session_sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $cart_session_id = $row['id'];
+    } else {
+        // Create new cart session
+        $insert_session_sql = "INSERT INTO cart_sessions (table_id, customer_name, customer_mobile) 
+                            VALUES ('$table_id', '$customer_name', '$customer_mobile')";
+        if (mysqli_query($conn, $insert_session_sql)) {
+            $cart_session_id = mysqli_insert_id($conn);
+        } else {
+            die("Error creating cart session: " . mysqli_error($conn));
+        }
+    }
+
+    // Check if product already in cart
+    $check_cart_sql = "SELECT id FROM cart_items WHERE cart_session_id = '$cart_session_id' AND product_id = '$product_id'";
+    $cart_result = mysqli_query($conn, $check_cart_sql);
+
+    if (mysqli_num_rows($cart_result) > 0) {
+        // Update quantity
+        $update_sql = "UPDATE cart_items 
+                    SET quantity = quantity + $quantity 
+                    WHERE cart_session_id = '$cart_session_id' AND product_id = '$product_id'";
+        mysqli_query($conn, $update_sql);
+    } else {
+        // Insert new item
+        $insert_item_sql = "INSERT INTO cart_items (cart_session_id, product_id, quantity)
+                            VALUES ('$cart_session_id', '$product_id', '$quantity')";
+        mysqli_query($conn, $insert_item_sql);
+    }
+
+    // Get total items in cart
+    $count_sql = "SELECT SUM(quantity) as total_items FROM cart_items WHERE cart_session_id = '$cart_session_id'";
+    $count_result = mysqli_query($conn, $count_sql);
+    $cart_count = 0;
+    if ($count_result && mysqli_num_rows($count_result) > 0) {
+        $count_row = mysqli_fetch_assoc($count_result);
+        $cart_count = $count_row['total_items'];
+    }
+
+    $_SESSION['cart_count'] = $cart_count;
+
+    echo "<script>
+        window.alert('Item added to cart.cart count $cart_count');
+        window.location.href = '?category=11';
+    </script>";
 }
 
-// Step 3: Check if product already in cart
-$sql = "SELECT id FROM cart_items WHERE cart_session_id = ? AND product_id = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$cart_session_id, $product_id]);
 
-if ($stmt->rowCount() > 0) {
-    // Update quantity
-    $update = "UPDATE cart_items SET quantity = quantity + ? WHERE cart_session_id = ? AND product_id = ?";
-    $stmt = $pdo->prepare($update);
-    $stmt->execute([$quantity, $cart_session_id, $product_id]);
-} else {
-    // Insert new item
-    $insert = "INSERT INTO cart_items (cart_session_id, product_id, quantity) VALUES (?, ?, ?)";
-    $stmt = $pdo->prepare($insert);
-    $stmt->execute([$cart_session_id, $product_id, $quantity]);
-}
-
-}
 // -------------------------------------------------------------------------------------
 
 ?>
@@ -106,7 +124,7 @@ if ($stmt->rowCount() > 0) {
     <div class="header ">
         <h2>Our Menu</h2>
         <h2> Table<?php echo " $table_number";  ?></h2>
-        <div class="cart"><i class="fa-solid fa-cart-shopping fa-beat"><div class="cartdot">2</div></i></div>
+        <div class="cart"><i class="fa-solid fa-cart-shopping <?php if(isset( $_SESSION['cart_count'])){echo "fa-beat";}?>"><div class="cartdot"><?php if(isset( $_SESSION['cart_count'])){echo $_SESSION['cart_count'];}else{echo"0";} ?></div></i></div>
       </div>
     <!-- -------------------- -->
 

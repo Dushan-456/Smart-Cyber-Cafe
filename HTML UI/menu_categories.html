@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+
+<div class="body-container">
+  <div class="top">
+    <div class="header ">
+        <h2>Our Menu</h2>
+        <div class="cart"><i class="fa-solid fa-cart-shopping fa-beat"><div class="cartdot">2</div></i></div>
+      </div>
+    
+      <div class="tabs">
+        <div class="tab active" data-tab="foods">Foods</div>
+        <div class="tab" data-tab="drinks">Drinks</div>
+        <div class="tab" data-tab="desserts">Desserts</div>
+      </div>
+</div>
+
+  <!-- Foods Grid -->
+  <div class="menu-grid active" id="foods">
+    <div class="food-card">
+      <img src="../assest/images/products/noodles.jpg" alt="Spicy Noodles">
+      <div class="favorite"><i ></i></div>
+      <h4>Spicy Noodles</h4>
+    </div>
+  
+  </div>
+
+  <!-- drinks Grid -->
+  <div class="menu-grid" id="drinks">
+    <div class="food-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI7uXAnhdOWJpu4Maf6a9yjc1RikPvL0nq_Q&s" alt="Fries">
+      <div class="favorite"><i class="far fa-heart"></i></div>
+      <h4>Fries</h4>
+      <p>N800</p>
+    </div>
+    <div class="food-card">
+      <img src="https://via.placeholder.com/150" alt="Onion Rings">
+      <div class="favorite"><i class="far fa-heart"></i></div>
+      <h4>Onion Rings</h4>
+      <p>N900</p>
+    </div>
+  </div>
+
+  <!-- Desserts Grid -->
+  <div class="menu-grid" id="desserts">
+    <div class="food-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI7uXAnhdOWJpu4Maf6a9yjc1RikPvL0nq_Q&s" alt="Chicken Wings">
+      <div class="favorite"><i class="far fa-heart"></i></div>
+      <h4>Chicken Wings</h4>
+      <p>N1,000</p>
+    </div>
+    <div class="food-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI7uXAnhdOWJpu4Maf6a9yjc1RikPvL0nq_Q&s" alt="Samosa">
+      <div class="favorite"><i class="far fa-heart"></i></div>
+      <h4>Samosa</h4>
+      <p>N500</p>
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- // login popup -->
+ 
+
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+   
+        <div class="form-section">
+      <form action="">
+            <span class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+
+        <h3>Your Details</h3>
+        
+        <input type="text" required placeholder="Your Name">
+        <input type="text" required placeholder="Mobile Number">
+        
+        <div class="checkbox-container">
+          <input type="checkbox" id="remember" name="remember" />
+          <label for="remember">Allow promotion sms</label>
+        </div>
+        
+        <button class="continue" onclick="login()">Continue</button>
+      </form>
+
+      <div class="or-divider">or</div>
+      <button class="facebook-btn" onclick="closeModal()">Skip</button>
+    </div>
+  </div>
+</div>
+
+<script src="./script.js"></script>
+
+
+</body>
+</html>
